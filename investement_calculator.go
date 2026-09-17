@@ -32,14 +32,14 @@ func main() {
 
 	fmt.Println("Lets calculate EBT, profit and ratio")
 
-	var revenue float64
+	// var revenue float64
 	var totalExpenses float64
 	var taxRate float64
 
 	// fmt.Print("Enter Total Revenue: ")
-	outputText("Enter Total Revenue: ")
-	fmt.Scan(&revenue)
-
+	// outputText("Enter Total Revenue: ")
+	// fmt.Scan(&revenue)
+     revenue := getUserInput("Enter Total Revenue: ")
 	// fmt.Print("Enter Total Expenses: ")
 	outputText("Enter Total Expenses: ")
 	fmt.Scan(&totalExpenses)
@@ -92,4 +92,12 @@ func return_EBT_profit_ratio(revenue,totalExpenses,taxRate float64)( ebt,profit,
 
 	return ebt,profit, ratio
 
+}
+
+
+func getUserInput(infoText string) float64{
+	var userInput float64
+	fmt.Print(infoText)
+	fmt.Scan(&userInput)
+	return userInput
 }
