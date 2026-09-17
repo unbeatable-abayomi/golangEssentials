@@ -52,6 +52,15 @@ func main() {
 
 
 	fmt.Printf("EBT: %.2f, Profit: %.2f, Ratio: %.2f\n", ebt,profit,ratio)
-	fmt.Printf("EBT: %v, Profit: %v, Ratio: %v\n", ebt,profit,ratio)
+	fmt.Printf(`
+	EBT: %v, 
+	Profit: %v, 
+	Ratio: %v`, 
+	ebt,profit,ratio)
+    fmt.Printf("EBT: %T, Profit: %T, Ratio: %T\n", ebt,profit,ratio)
 
+	 formattedEbt := fmt.Sprintf("Formatted Value for Ebt:  %.1f\n", ebt)
+	 formattedProfit := fmt.Sprintf("Formatted Value for Profit:  %.1f\n", profit)
+
+	 fmt.Print(formattedEbt,formattedProfit)
 }
