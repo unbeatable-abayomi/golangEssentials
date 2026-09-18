@@ -20,11 +20,11 @@ func main(){
     var userAction  string
 	
     fmt.Scan(&userAction)
-
-    if userAction == "1"{
-		fmt.Printf("Here is the current balance: %v\n", initialBalance)
-	} else if userAction == "2"{
-       fmt.Print("Pls enter amount to Deposit: ")
+    switch userAction{
+	case "1":
+				fmt.Printf("Here is the current balance: %v\n", initialBalance)
+	case "2":
+		       fmt.Print("Pls enter amount to Deposit: ")
 	   var despoitAmount  float64
 	   fmt.Scan(&despoitAmount)
 	   if despoitAmount <= 0 {
@@ -34,8 +34,8 @@ func main(){
 	   }
 	   initialBalance += despoitAmount
 	   fmt.Printf("Here is the current balance: %v\n", initialBalance)
-	}else if userAction == "3"{
-       fmt.Print("Pls enter amount to withdraw: ")
+	case "3":
+		fmt.Print("Pls enter amount to withdraw: ")
 	   
 	   var withdramAmount  float64
 	   fmt.Scan(&withdramAmount)
@@ -53,11 +53,50 @@ func main(){
 	   }
 	   initialBalance -= withdramAmount
 	   fmt.Printf("Here is the current balance: %v\n", initialBalance)
-	}else{
-		println("Goodbye....")
-		//return
-		break
+	default:
+		fmt.Println("Goodbye....")
+		fmt.Println("Thank you for Using our Bank")
+		return
+		//break
+
 	}
+    // if userAction == "1"{
+	// 	fmt.Printf("Here is the current balance: %v\n", initialBalance)
+	// } else if userAction == "2"{
+    //    fmt.Print("Pls enter amount to Deposit: ")
+	//    var despoitAmount  float64
+	//    fmt.Scan(&despoitAmount)
+	//    if despoitAmount <= 0 {
+	// 	fmt.Println("Hi You entered an invalid amount to deposite")
+	// 	//return
+	// 	continue
+	//    }
+	//    initialBalance += despoitAmount
+	//    fmt.Printf("Here is the current balance: %v\n", initialBalance)
+	// }else if userAction == "3"{
+    //    fmt.Print("Pls enter amount to withdraw: ")
+	   
+	//    var withdramAmount  float64
+	//    fmt.Scan(&withdramAmount)
+	//    	if withdramAmount <= 0 {
+	// 	fmt.Println("Hi You entered an invalid amount to withdraw below 0 or 0")
+	// 	//return
+	// 	continue
+
+	//    }
+
+	//    if withdramAmount > initialBalance {
+	// fmt.Println("Hi You entered an invalid amount to withdraw above balance")
+	// 	//return
+	// 	continue
+	//    }
+	//    initialBalance -= withdramAmount
+	//    fmt.Printf("Here is the current balance: %v\n", initialBalance)
+	// }else{
+	// 	println("Goodbye....")
+	// 	//return
+	// 	break
+	// }
 	}
-  fmt.Println("Thank you for Using our Bank")
+  //fmt.Println("Thank you for Using our Bank")
 }
