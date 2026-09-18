@@ -35,8 +35,13 @@ func main(){
 	   
 	   var withdramAmount  float64
 	   fmt.Scan(&withdramAmount)
-	   	if withdramAmount <= 0 || withdramAmount > initialBalance {
-		fmt.Println("Hi You entered an invalid amount for withdrawl")
+	   	if withdramAmount <= 0 {
+		fmt.Println("Hi You entered an invalid amount to withdraw below 0 or 0")
+		return
+	   }
+
+	   if withdramAmount > initialBalance {
+	fmt.Println("Hi You entered an invalid amount to withdraw above balance")
 		return
 	   }
 	   initialBalance -= withdramAmount
