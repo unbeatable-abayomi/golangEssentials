@@ -33,26 +33,28 @@ func main() {
 	fmt.Println("Lets calculate EBT, profit and ratio")
 
 	// var revenue float64
-	var totalExpenses float64
-	var taxRate float64
+	// var totalExpenses float64
+	// var taxRate float64
 
 	// fmt.Print("Enter Total Revenue: ")
 	// outputText("Enter Total Revenue: ")
 	// fmt.Scan(&revenue)
      revenue := getUserInput("Enter Total Revenue: ")
+	 totalExpenses := getUserInput("Enter Total Expenses: ")
+	 taxRate := getUserInput("Enter Tax Rate: ")
 	// fmt.Print("Enter Total Expenses: ")
-	outputText("Enter Total Expenses: ")
-	fmt.Scan(&totalExpenses)
+	// outputText("Enter Total Expenses: ")
+	// fmt.Scan(&totalExpenses)
 
-	fmt.Print("Enter Tax Rate: ")
-	fmt.Scan(&taxRate)
+	// fmt.Print("Enter Tax Rate: ")
+	// fmt.Scan(&taxRate)
 
 	// ebt := revenue - totalExpenses
 
 	// profit := ebt * (1 - taxRate/100)
 
 	// ratio := ebt / profit
-	ebt, profit,ratio := return_EBT_profit_ratio(revenue,totalExpenses,taxRate)
+	ebt, profit,ratio := calculateFinacials(revenue,totalExpenses,taxRate)
 
 	fmt.Printf("EBT: %.2f, Profit: %.2f, Ratio: %.2f\n", ebt, profit, ratio)
 	fmt.Printf(`
@@ -85,10 +87,10 @@ func returnFutureValues(investmentAmmount, expectedReturnRate, years float64) (f
 	
 }
 
-func return_EBT_profit_ratio(revenue,totalExpenses,taxRate float64)( ebt,profit,ratio float64){
-	ebt = revenue - totalExpenses
-	profit = ebt * (1 - taxRate/100)
-	ratio = ebt / profit
+func calculateFinacials(revenue,totalExpenses,taxRate float64)( float64,float64,float64){
+	ebt := revenue - totalExpenses
+	profit := ebt * (1 - taxRate/100)
+	ratio := ebt / profit
 
 	return ebt,profit, ratio
 
