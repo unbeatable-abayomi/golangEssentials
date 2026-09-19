@@ -3,10 +3,12 @@ package main
 import (
 	"fmt"
 	"math"
+	"errors"
+	"os"
 )
 
 const inflationRate = 2.5
-
+const myFinance = "myFinances.txt"
 func main() {
 	fmt.Println("Hello World")
 
@@ -39,9 +41,28 @@ func main() {
 	// fmt.Print("Enter Total Revenue: ")
 	// outputText("Enter Total Revenue: ")
 	// fmt.Scan(&revenue)
-     revenue := getUserInput("Enter Total Revenue: ")
-	 totalExpenses := getUserInput("Enter Total Expenses: ")
-	 taxRate := getUserInput("Enter Tax Rate: ")
+     revenue, err := getUserInput("Enter Total Revenue: ")
+	 	 if err != nil{
+		fmt.Println("ERROR")
+		fmt.Println(err)
+		fmt.Println("---------------")
+		panic("Can't continue, sorry.")
+	 }
+	 totalExpenses, err := getUserInput("Enter Total Expenses: ")
+	 	 if err != nil{
+		fmt.Println("ERROR")
+		fmt.Println(err)
+		fmt.Println("---------------")
+		panic("Can't continue, sorry.")
+	 }
+	 taxRate, err := getUserInput("Enter Tax Rate: ")
+	 	 if err != nil{
+		fmt.Println("ERROR")
+		fmt.Println(err)
+		fmt.Println("---------------")
+		panic("Can't continue, sorry.")
+	 }
+     
 	// fmt.Print("Enter Total Expenses: ")
 	// outputText("Enter Total Expenses: ")
 	// fmt.Scan(&totalExpenses)
@@ -54,8 +75,9 @@ func main() {
 	// profit := ebt * (1 - taxRate/100)
 
 	// ratio := ebt / profit
+	// writeBalanceToFile(revenue,totalExpenses,taxRate)
 	ebt, profit,ratio := calculateFinacials(revenue,totalExpenses,taxRate)
-
+writeBalanceToFile(ebt,profit,ratio)
 	fmt.Printf("EBT: %.2f, Profit: %.2f, Ratio: %.2f\n", ebt, profit, ratio)
 	fmt.Printf(`
 	EBT: %v, 
@@ -70,7 +92,7 @@ func main() {
 	fmt.Print(formattedEbt, formattedProfit)
 }
 
-func outputText(text string) {
+func outputText(text string)  {
 	fmt.Printf(text)
 }
 
@@ -97,9 +119,24 @@ func calculateFinacials(revenue,totalExpenses,taxRate float64)( float64,float64,
 }
 
 
-func getUserInput(infoText string) float64{
+func getUserInput(infoText string) (float64,error){
+	
 	var userInput float64
 	fmt.Print(infoText)
 	fmt.Scan(&userInput)
-	return userInput
+	if userInput == 0 {
+		return userInput, errors.New("Sorry you entered a Zero Value")
+	}
+	if userInput < 0{
+		return userInput, errors.New("Sorry you entered a Negative Value ")
+	}
+	return userInput, nil
+}
+
+
+func writeBalanceToFile(ebt,profit,ratio float64){
+//   results := fmt.Sprint(revenue,totalExpenses,taxRate)
+ results2 := fmt.Sprintf("EBT: %.1f\nProfit: %.1f\nRatio: %.3f\n",ebt,profit,ratio)
+  os.WriteFile(myFinance, []byte(results2), 0644)
+ 
 }
