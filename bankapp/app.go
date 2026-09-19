@@ -3,7 +3,14 @@ package main
 
 import (
    "fmt"
+   "os"
 )
+
+func writeBalanceToFile(balance float64){
+  balanceText := fmt.Sprint(balance)
+  os.WriteFile("balance.txt", []byte(balanceText), 0644)
+
+}
 
 
 func main(){
@@ -34,6 +41,7 @@ func main(){
 	   }
 	   initialBalance += despoitAmount
 	   fmt.Printf("Here is the current balance: %v\n", initialBalance)
+	   writeBalanceToFile(initialBalance)
 	case "3":
 		fmt.Print("Pls enter amount to withdraw: ")
 	   
@@ -53,6 +61,7 @@ func main(){
 	   }
 	   initialBalance -= withdramAmount
 	   fmt.Printf("Here is the current balance: %v\n", initialBalance)
+	   writeBalanceToFile(initialBalance)
 	default:
 		fmt.Println("Goodbye....")
 		fmt.Println("Thank you for Using our Bank")
