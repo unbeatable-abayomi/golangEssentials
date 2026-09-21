@@ -44,13 +44,14 @@ func main(){
 		panic("Can't continue, sorry.")
 	}
  for {
-	fmt.Println("Welcome to Bank")
-	fmt.Println("What do you want to do")
-	fmt.Println("1. Check Balance")
-	fmt.Println("2. Deposit")
-	fmt.Println("3. Withdraw")
-	fmt.Println("4. Exit")
-    fmt.Print("Your Chioce: ")
+	// fmt.Println("Welcome to Bank")
+	// fmt.Println("What do you want to do")
+	// fmt.Println("1. Check Balance")
+	// fmt.Println("2. Deposit")
+	// fmt.Println("3. Withdraw")
+	// fmt.Println("4. Exit")
+    // fmt.Print("Your Chioce: ")
+	presentOptions()
     var userAction  string
 	
     fmt.Scan(&userAction)
@@ -136,3 +137,13 @@ func main(){
 	}
   //fmt.Println("Thank you for Using our Bank")
 }
+
+// func presentOptions2(){
+// 		fmt.Println("Welcome to Bank")
+// 	fmt.Println("What do you want to do")
+// 	fmt.Println("1. Check Balance")
+// 	fmt.Println("2. Deposit")
+// 	fmt.Println("3. Withdraw")
+// 	fmt.Println("4. Exit")
+//     fmt.Print("Your Chioce: ")
+// }
