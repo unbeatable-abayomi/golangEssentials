@@ -4,6 +4,7 @@ package main
 import (
    "fmt"
    "test-bank/fileops"
+   "github.com/Pallinder/go-randomdata"
 //    "os"
 //    "strconv"
 //    "errors"
@@ -68,6 +69,8 @@ func main(){
 		fmt.Println("---------------")
 		panic("Can't continue, sorry.")
 	}
+	fmt.Println("Welcome to Go Bank")
+	fmt.Println("Reach Us 24/7 on ==> ", randomdata.PhoneNumber())
  for {
 	// fmt.Println("Welcome to Bank")
 	// fmt.Println("What do you want to do")
