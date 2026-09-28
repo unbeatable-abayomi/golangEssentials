@@ -11,7 +11,7 @@ const inflationRate = 2.5
 const myFinance = "myFinances.txt"
 func main() {
 	fmt.Println("Hello World")
-
+    
 	// const inflationRate = 2.5
 	// years, expectedReturnRate := 10.0, 5.5
 	var years float64
