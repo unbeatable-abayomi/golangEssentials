@@ -26,9 +26,9 @@ func getFloatFromFile(fileName string) (float64, error){
 
 }
 
-func writeBalanceToFile(balance float64){
-  balanceText := fmt.Sprint(balance)
-  os.WriteFile(accountBalanceFIle, []byte(balanceText), 0644)
+func writeFloatFile(value float64, fileName string){
+  balanceText := fmt.Sprint(value)
+  os.WriteFile(fileName, []byte(balanceText), 0644)
 
 }
 
@@ -93,7 +93,7 @@ func main(){
 	   }
 	   initialBalance += despoitAmount
 	   fmt.Printf("Here is the current balance: %v\n", initialBalance)
-	   writeBalanceToFile(initialBalance)
+	   writeFloatFile(initialBalance, accountBalanceFIle)
 	case "3":
 		fmt.Print("Pls enter amount to withdraw: ")
 	   
@@ -113,7 +113,7 @@ func main(){
 	   }
 	   initialBalance -= withdramAmount
 	   fmt.Printf("Here is the current balance: %v\n", initialBalance)
-	   writeBalanceToFile(initialBalance)
+	   writeFloatFile(initialBalance,accountBalanceFIle)
 	default:
 		fmt.Println("Goodbye....")
 		fmt.Println("Thank you for Using our Bank")
