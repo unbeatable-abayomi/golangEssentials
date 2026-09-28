@@ -3,34 +3,35 @@ package main
 
 import (
    "fmt"
-   "os"
-   "strconv"
-   "errors"
+   "test-bank/fileops"
+//    "os"
+//    "strconv"
+//    "errors"
 )
 
 const accountBalanceFIle = "balance.txt"
 
-func getFloatFromFile(fileName string) (float64, error){
-	data, err := os.ReadFile(fileName)
-	if err != nil {
-		return 1000, errors.New("Falied To find  File")
-	}
-	valueText := string(data)
-	value, err:= strconv.ParseFloat(valueText, 64)
+// func getFloatFromFile(fileName string) (float64, error){
+// 	data, err := os.ReadFile(fileName)
+// 	if err != nil {
+// 		return 1000, errors.New("Falied To find  File")
+// 	}
+// 	valueText := string(data)
+// 	value, err:= strconv.ParseFloat(valueText, 64)
 
-		if err != nil {
-		return 1000, errors.New("Falied To Parse Stored Value")
-	}
+// 		if err != nil {
+// 		return 1000, errors.New("Falied To Parse Stored Value")
+// 	}
 
-	return value, nil
+// 	return value, nil
 
-}
+// }
 
-func writeFloatFile(value float64, fileName string){
-  balanceText := fmt.Sprint(value)
-  os.WriteFile(fileName, []byte(balanceText), 0644)
+// func writeFloatFile(value float64, fileName string){
+//   balanceText := fmt.Sprint(value)
+//   os.WriteFile(fileName, []byte(balanceText), 0644)
 
-}
+// }
 
 // func getBalanceFromFile() (float64, error){
 // 	data, err := os.ReadFile(accountBalanceFIle)
@@ -59,7 +60,7 @@ func writeFloatFile(value float64, fileName string){
 func main(){
 
 //var initialBalance float64 = 
-    initialBalance, err := getFloatFromFile(accountBalanceFIle)
+    initialBalance, err := fileops.GetFloatFromFile(accountBalanceFIle)
 
 	if err != nil{
 		fmt.Println("ERROR")
@@ -93,7 +94,7 @@ func main(){
 	   }
 	   initialBalance += despoitAmount
 	   fmt.Printf("Here is the current balance: %v\n", initialBalance)
-	   writeFloatFile(initialBalance, accountBalanceFIle)
+	   fileops.WriteFloatFile(initialBalance, accountBalanceFIle)
 	case "3":
 		fmt.Print("Pls enter amount to withdraw: ")
 	   
@@ -113,7 +114,7 @@ func main(){
 	   }
 	   initialBalance -= withdramAmount
 	   fmt.Printf("Here is the current balance: %v\n", initialBalance)
-	   writeFloatFile(initialBalance,accountBalanceFIle)
+	   fileops.WriteFloatFile(initialBalance,accountBalanceFIle)
 	default:
 		fmt.Println("Goodbye....")
 		fmt.Println("Thank you for Using our Bank")
