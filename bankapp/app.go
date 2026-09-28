@@ -10,32 +10,56 @@ import (
 
 const accountBalanceFIle = "balance.txt"
 
-func getBalanceFromFile() (float64, error){
-	data, err := os.ReadFile(accountBalanceFIle)
+func getFloatFromFile(fileName string) (float64, error){
+	data, err := os.ReadFile(fileName)
 	if err != nil {
-		return 1000, errors.New("Falied To find Balance File")
+		return 1000, errors.New("Falied To find  File")
 	}
-	balanceText := string(data)
-	balance, err:= strconv.ParseFloat(balanceText, 64)
+	valueText := string(data)
+	value, err:= strconv.ParseFloat(valueText, 64)
 
 		if err != nil {
-		return 1000, errors.New("Falied To Parse Balance File")
+		return 1000, errors.New("Falied To Parse Stored Value")
 	}
 
-	return balance, nil
+	return value, nil
 
 }
+
 func writeBalanceToFile(balance float64){
   balanceText := fmt.Sprint(balance)
   os.WriteFile(accountBalanceFIle, []byte(balanceText), 0644)
 
 }
 
+// func getBalanceFromFile() (float64, error){
+// 	data, err := os.ReadFile(accountBalanceFIle)
+// 	if err != nil {
+// 		return 1000, errors.New("Falied To find Balance File")
+// 	}
+// 	balanceText := string(data)
+// 	balance, err:= strconv.ParseFloat(balanceText, 64)
+
+// 		if err != nil {
+// 		return 1000, errors.New("Falied To Parse Balance File")
+// 	}
+
+// 	return balance, nil
+
+// }
+
+
+// func writeBalanceToFile(balance float64){
+//   balanceText := fmt.Sprint(balance)
+//   os.WriteFile(accountBalanceFIle, []byte(balanceText), 0644)
+
+// }
+
 
 func main(){
 
 //var initialBalance float64 = 
-    initialBalance, err := getBalanceFromFile()
+    initialBalance, err := getFloatFromFile(accountBalanceFIle)
 
 	if err != nil{
 		fmt.Println("ERROR")
